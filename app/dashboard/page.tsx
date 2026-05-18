@@ -5,6 +5,7 @@ import { DataTableIntegrated } from "@/app/dashboard/components/data-table-integ
 import { SectionCards } from "@/app/dashboard/components/section-cards";
 import { SiteHeader } from "@/app/dashboard/components/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { Suspense } from "react";
 
 export default function Page() {
   return (
@@ -20,7 +21,9 @@ export default function Page() {
                 <ChartAreaInteractiveLazy />
               </div>
               <div className="px-4 lg:px-6">
-                <DataTableIntegrated />
+                <Suspense fallback={<div>Loading data table...</div>}>
+                  <DataTableIntegrated />
+                </Suspense>
               </div>
             </div>
           </div>
